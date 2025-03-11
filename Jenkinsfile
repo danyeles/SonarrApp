@@ -8,7 +8,7 @@ pipeline {
         PGID = '1000'
         TZ = 'America/Monterrey'
         WEBUI_PORTS = '8989/tcp,8989/udp'
-        CONFIG_PATH = '/home/docker/sonarr/config:/config'
+        CONFIG_PATH = '/home/docker/sonarr/config'
         MEDIA_PATH = '/mnt/Media'
         TVSHOWS_PATH = '/mnt/Media/TVShows'
         MYSHOWS_PATH = '/mnt/Media/MyShows'
