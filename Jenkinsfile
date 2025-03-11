@@ -12,8 +12,6 @@ pipeline {
         MEDIA_PATH = '/mnt/Media'
         TVSHOWS_PATH = '/mnt/Media/TVShows'
         MYSHOWS_PATH = '/mnt/Media/MyShows'
-        MOVIES_PATH = '/mnt/Media/Movies'
-        MYMOVIES_PATH = '/mnt/Media/MyMovies'
         DOWNLOADS_PATH = '/mnt/Media/Downloads'
         TVSDOWNLOADS_PATH = '/mnt/Media/TVShows/TVShowsDownloads'
     }
@@ -35,8 +33,6 @@ pipeline {
                         -v ${DOWNLOADS_PATH}:/downloads \
                         -v ${TVSHOWS_PATH}:/TVShows \
                         -v ${MYSHOWS_PATH}:/MyShows \
-                        -v ${MOVIES_PATH}:/Movies \
-                        -v ${MYMOVIES_PATH}:/MyMovies \
                         -v ${TVSDOWNLOADS_PATH}:/TVShowsDownloads \
                         ${DOCKER_IMAGE}
                     """
