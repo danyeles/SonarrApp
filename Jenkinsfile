@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        USERNAME = sh(script: 'echo $USER', returnStdout: true).trim()
         DOCKER_IMAGE = 'lscr.io/linuxserver/sonarr:latest'
         CONTAINER_NAME = 'sonarr'
         PUID = '1000'
@@ -9,11 +10,6 @@ pipeline {
         TZ = 'America/Monterrey'
         WEBUI_PORTS = '8989/tcp,8989/udp'
         CONFIG_PATH = '/home/docker/sonarr/config'
-        MEDIA_PATH = '/mnt/Media'
-        TVSHOWS_PATH = '/mnt/Media/TVShows'
-        MYSHOWS_PATH = '/mnt/Media/MyShows'
-        DOWNLOADS_PATH = '/mnt/Media/Downloads'
-        TVSDOWNLOADS_PATH = '/mnt/Media/TVShows/TVShowsDownloads'
     }
 
     stages {
@@ -29,11 +25,10 @@ pipeline {
                         -e PGID=${PGID} \
                         -e TZ=${TZ} \
                         -v ${CONFIG_PATH}:/config \
-                        -v ${MEDIA_PATH}:/Media \
-                        -v ${DOWNLOADS_PATH}:/downloads \
-                        -v ${TVSHOWS_PATH}:/TVShows \
-                        -v ${MYSHOWS_PATH}:/MyShows \
-                        -v ${TVSDOWNLOADS_PATH}:/TVShowsDownloads \
+                        -v /media/${USERNAME}/Media:/Media \
+                        -v /media/${USERNAME}/Media/Downloads:/downloads \
+                        -v /media/${USERNAME}/Media/TVShows:/TVShows \
+                        -v /media/${USERNAME}/Media/MyTVShows:/MyTVShows \
                         ${DOCKER_IMAGE}
                     """
                 }
