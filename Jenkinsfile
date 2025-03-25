@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        USERNAME = sh(script: 'echo $USER', returnStdout: true).trim()
         DOCKER_IMAGE = 'lscr.io/linuxserver/sonarr:latest'
         CONTAINER_NAME = 'sonarr'
         PUID = '1000'
@@ -25,10 +24,10 @@ pipeline {
                         -e PGID=${PGID} \
                         -e TZ=${TZ} \
                         -v ${CONFIG_PATH}:/config \
-                        -v /media/${USERNAME}/Media:/Media \
-                        -v /media/${USERNAME}/Media/Downloads:/downloads \
-                        -v /media/${USERNAME}/Media/TVShows:/TVShows \
-                        -v /media/${USERNAME}/Media/MyTVShows:/MyTVShows \
+                        -v /media/Media:/Media \
+                        -v /media/Media/Downloads:/downloads \
+                        -v /media/Media/TVShows:/TVShows \
+                        -v /media/Media/MyTVShows:/MyTVShows \
                         ${DOCKER_IMAGE}
                     """
                 }
