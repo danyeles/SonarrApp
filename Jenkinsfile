@@ -58,7 +58,7 @@ pipeline {
                             -v /mnt/Media:/Media \
                             -v /mnt/Media/Downloads:/downloads \
                             -v /mnt/Media/TVShows:/TVShows \
-                            -v /mnt/Media/MyTVShows:/MyShows \
+                            -v /mnt/Media/MyShows:/MyShows \
                             ${DOCKER_IMAGE}
                         """
                     } else if (ACTION == 'Stop and Run' && CONTAINER_EXISTS) {
@@ -83,7 +83,7 @@ pipeline {
                             -v /mnt/Media:/Media \
                             -v /mnt/Media/Downloads:/downloads \
                             -v /mnt/Media/TVShows:/TVShows \
-                            -v /mnt/Media/MyTVShows:/MyShows \
+                            -v /mnt/Media/MyShows:/MyShows \
                             ${DOCKER_IMAGE}
                         """
                     }
